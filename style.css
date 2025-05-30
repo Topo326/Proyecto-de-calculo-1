@@ -1,0 +1,177 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', 'Arial', sans-serif;
+  background: url('assets/imagendecasa.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#game-container {
+  max-width: 420px;
+  margin: 2rem auto;
+  background: #F8EEDF;
+  border: 2px solid #8E1616;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#game-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+}
+header h1 {
+  color: #000000;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+#ui-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #E8C999;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+#vidas {
+  font-size: 1.5rem;
+  color: #8E1616;
+}
+#progreso {
+  flex: 1;
+  margin: 0 1rem;
+  height: 18px;
+  background: #F8EEDF;
+  border-radius: 9px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+#progreso-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #8E1616, #E8C999);
+  width: 0%;
+  border-radius: 9px;
+  transition: width 0.4s ease;
+}
+#personajes {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #E8C999;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+#personajes img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+#personajes img:hover {
+  transform: scale(1.1);
+}
+#pregunta-container {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #F8EEDF;
+  border: 2px solid #8E1616;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#pregunta-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+#pregunta {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  min-height: 48px;
+  color: #000000;
+}
+#opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.opcion {
+  background: #E8C999;
+  border: 2px solid #8E1616;
+  border-radius: 8px;
+  padding: 0.7rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.opcion:hover {
+  background: #F8EEDF;
+  border-color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#feedback {
+  min-height: 32px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #8E1616;
+  padding: 0.5rem;
+  background: #F8EEDF;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+#reiniciar {
+  background: #8E1616;
+  color: #F8EEDF;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#reiniciar:hover {
+  background: #E8C999;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+@media (max-width: 600px) {
+  #game-container {
+    max-width: 98vw;
+    padding: 0.5rem;
+  }
+  #personajes img {
+    width: 48px;
+    height: 48px;
+  }
+}
+#temporizador {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5em;
+  color: #000000;
+  background-color: #F8EEDF;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.5s;
+}
+
+#temporizador.alerta {
+  background-color: #8E1616;
+  color: #F8EEDF;
+} 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Búsqueda del Ratón con Jeffy y Loki</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div id="game-container">
+    <header>
+      <h1>La Búsqueda del Ratón con Jeffry y Locki</h1>
+    </header>
+    <div id="ui-panel">
+      <div id="vidas"></div>
+      <div id="progreso"></div>
+    </div>
+    <div id="personajes">
+      <img id="jeffy" src="assets/persona.png" alt="Jeffry">
+      <img id="loki" src="assets/locki.webp" alt="Locki">
+      <img id="raton" src="assets/raton.png" alt="Ratón">
+    </div>
+    <div id="pregunta-container">
+      <div id="pregunta"></div>
+      <div id="opciones"></div>
+    </div>
+    <div id="feedback"></div>
+    <button id="reiniciar" style="display:none;">Reintentar</button>
+  </div>
+  <script src="preguntas.js"></script>
+  <script src="main.js"></script>
+</body>
+</html> 
