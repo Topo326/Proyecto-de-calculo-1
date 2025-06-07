@@ -24,28 +24,35 @@ function renderUI() {
   document.querySelector('header h1').innerText = 'La Búsqueda del Ratón con Jeffry y Locki - Nivel ' + (window.nivel + 1);
 }
 
+// main.js (versión optimizada)
 function mostrarPregunta() {
   if (window.juegoTerminado) return;
+
   const preguntaObj = preguntas[window.nivel][window.preguntaActual];
   const preguntaDiv = document.getElementById('pregunta');
   const opcionesDiv = document.getElementById('opciones');
-  // Ocultar pregunta anterior
+
+  // Resetear contenedores con animación
   preguntaDiv.style.opacity = '0';
   opcionesDiv.style.opacity = '0';
+
   setTimeout(() => {
-    preguntaDiv.innerHTML = preguntaObj.texto;
-    opcionesDiv.innerHTML = '';
-    preguntaObj.opciones.forEach((op, idx) => {
-      const btn = document.createElement('button');
-      btn.className = 'opcion';
-      btn.innerText = op;
-      btn.onclick = () => responder(idx);
-      opcionesDiv.appendChild(btn);
+    // Mostrar pregunta TEXTUAL (sin procesar MathJax si no es necesario)
+    preguntaDiv.textContent = preguntaObj.texto; // Usamos textContent para evitar HTML no deseado
+    
+    // Generar opciones (texto plano)
+    opcionesDiv.innerHTML = ''; // Limpiar primero
+    preguntaObj.opciones.forEach((opcion, index) => {
+      const boton = document.createElement('button');
+      boton.className = 'opcion';
+      boton.textContent = opcion; // Texto directo, sin HTML
+      boton.onclick = () => responder(index);
+      opcionesDiv.appendChild(boton);
     });
-    // Mostrar nueva pregunta con animación
+
+    // Mostrar con animación
     preguntaDiv.style.opacity = '1';
     opcionesDiv.style.opacity = '1';
-    MathJax.typesetPromise(); // Para renderizar ecuaciones matemáticas si es necesario
   }, 300);
 }
 
