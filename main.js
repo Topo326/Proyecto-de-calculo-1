@@ -32,28 +32,24 @@ function mostrarPregunta() {
   const preguntaDiv = document.getElementById('pregunta');
   const opcionesDiv = document.getElementById('opciones');
 
-  // Resetear contenedores con animación
-  preguntaDiv.style.opacity = '0';
-  opcionesDiv.style.opacity = '0';
+  // Resetear contenedores
+  preguntaDiv.textContent = ''; // Limpiar completamente
+  opcionesDiv.innerHTML = '';
 
-  setTimeout(() => {
-    // Mostrar pregunta TEXTUAL (sin procesar MathJax si no es necesario)
-    preguntaDiv.textContent = preguntaObj.texto; // Usamos textContent para evitar HTML no deseado
-    
-    // Generar opciones (texto plano)
-    opcionesDiv.innerHTML = ''; // Limpiar primero
-    preguntaObj.opciones.forEach((opcion, index) => {
-      const boton = document.createElement('button');
-      boton.className = 'opcion';
-      boton.textContent = opcion; // Texto directo, sin HTML
-      boton.onclick = () => responder(index);
-      opcionesDiv.appendChild(boton);
-    });
+  // Mostrar pregunta (texto literal)
+  preguntaDiv.textContent = preguntaObj.texto;
 
-    // Mostrar con animación
-    preguntaDiv.style.opacity = '1';
-    opcionesDiv.style.opacity = '1';
-  }, 300);
+  // Generar opciones
+  preguntaObj.opciones.forEach((opcion, index) => {
+    const boton = document.createElement('button');
+    boton.className = 'opcion';
+    boton.textContent = opcion;
+    boton.onclick = () => responder(index);
+    opcionesDiv.appendChild(boton);
+  });
+
+  // Debug: Verifica en consola qué pregunta se está cargando
+  console.log("Pregunta actual:", preguntaObj.texto);
 }
 
 function responder(idx) {
