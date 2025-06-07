@@ -19,7 +19,7 @@ function renderUI() {
   const progresoDiv = document.getElementById('progreso');
   progresoDiv.innerHTML = '<div id="progreso-bar"></div>';
   const bar = document.getElementById('progreso-bar');
-  bar.style.width = ((window.preguntaActual) / 3 * 100) + '%';
+  bar.style.width = ((window.preguntaActual) / preguntas[window.nivel].length * 100) + '%'; // Ajuste dinámico
   // Mostrar nivel actual
   document.querySelector('header h1').innerText = 'La Búsqueda del Ratón con Jeffry y Locki - Nivel ' + (window.nivel + 1);
 }
@@ -45,7 +45,7 @@ function mostrarPregunta() {
     // Mostrar nueva pregunta con animación
     preguntaDiv.style.opacity = '1';
     opcionesDiv.style.opacity = '1';
-    MathJax.typesetPromise();
+    MathJax.typesetPromise(); // Para renderizar ecuaciones matemáticas si es necesario
   }, 300);
 }
 
@@ -76,8 +76,8 @@ function responder(idx) {
 function siguientePregunta() {
   window.preguntaActual++;
   renderUI();
-  if (window.preguntaActual >= 3) {
-    if (window.nivel === 2) {
+  if (window.preguntaActual >= preguntas[window.nivel].length) { // Ajuste dinámico según el número de preguntas por nivel
+    if (window.nivel === preguntas.length - 1) { // Verifica si es el último nivel
       victoria();
     } else {
       // Efecto de suspenso al subir de nivel
@@ -123,7 +123,7 @@ function perderVidaNivel() {
 
 function victoria() {
   window.juegoTerminado = true;
-  document.getElementById('feedback').innerText = '¡Jeffy y Loki atrapan al ratón!';
+  document.getElementById('feedback').innerText = '¡Jeffy y Loki atrapan al ratón! ¡Felicidades, completaste todos los niveles!';
   animarPersonaje('raton', 'atrapado');
   reproducirSonido('victoria');
   document.getElementById('reiniciar').style.display = 'block';
